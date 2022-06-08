@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/ahmedMunna1767/go-vue-socket-chat/pkg/websocket"
@@ -35,5 +36,5 @@ func setupRoutes() {
 func main() {
 	fmt.Println("Go Chat App")
 	setupRoutes()
-	http.ListenAndServe(":8080", nil)
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
