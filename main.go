@@ -24,6 +24,11 @@ func serveWs(pool *websocket.Pool, w http.ResponseWriter, r *http.Request) {
 	client.Read()
 }
 
+func hello(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Server Pinged")
+	w.Write([]byte("This is Hello World From The Chat Server"))
+}
+
 func setupRoutes() {
 	pool := websocket.NewPool()
 	go pool.Start()
@@ -31,6 +36,9 @@ func setupRoutes() {
 	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
 		serveWs(pool, w, r)
 	})
+
+	http.HandleFunc("/", hello)
+
 }
 
 func main() {
