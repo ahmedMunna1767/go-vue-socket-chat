@@ -42,7 +42,7 @@ func setupRoutes() {
 }
 
 func main() {
-	fmt.Println("Go Chat App")
+	fmt.Println("Go Chat App with TLS Config")
 	setupRoutes()
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":443", nil))
 }
